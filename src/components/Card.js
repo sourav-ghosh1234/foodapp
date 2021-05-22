@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import {cart} from '../Items'
-function Card({name,desc,price,photo,id,addtoCart}) {
+import {Link} from 'react-router-dom'
+function Card({name,photo}) {
   // const [cart,setCart]=useState([])
   const add=(id)=>{
     console.log("clicked")
@@ -8,14 +9,14 @@ function Card({name,desc,price,photo,id,addtoCart}) {
   }
     return (
         <>
-        <div key={id} className="card"  style={{marginLeft:"100px",height:"100px",width:"509px"}}>
-  <img className="card-img-top" style={{height:"300px",width:"300px"}}src={photo} alt="img photo"/>
+        <Link to={`/productpage/${name}`}>
+       <div className="card" style={{width: "18rem"}}>
+  <img src={photo} className="card-img-top" alt="..."/>
   <div className="card-body">
-    <h5 className="card-title">{name}</h5>
-    <p className="card-text">{price}</p>
-    <a href="#" className="btn btn-primary" onClick={()=>{addtoCart(id)}}>Add to cart</a>
+    <h2 className="card-text" style={{textDecoration:"none"}}>{name}</h2>
   </div>
 </div>
+</Link>
         </>
     )
 }
